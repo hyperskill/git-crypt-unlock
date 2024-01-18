@@ -9,12 +9,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Install git-crypt
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y git-crypt
-      shell: bash
-
     - run: |
         echo "${{ inputs.git_crypt_key }}" | base64 -d > /tmp/data.key
         git-crypt unlock /tmp/data.key
